@@ -1,0 +1,23 @@
+.cash-flow-modal-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(100, 100, 100, 0.7);
+}
+
+.cash-flow-modal {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: lightgreen;
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 200px;
+   padding-bottom: 30px;
+}
+
+.cash-flow-form-label{
+    margin: 10px;
+}
