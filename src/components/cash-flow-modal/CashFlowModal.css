@@ -4,20 +4,85 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(100, 100, 100, 0.7);
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .cash-flow-modal {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: lightgreen;
+    background-image: url("src/assets/gradient.png");
     width: 800px;
     margin: 0 auto;
     margin-top: 200px;
-   padding-bottom: 30px;
+    padding-bottom: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .cash-flow-form-label{
     margin: 10px;
 }
+
+.cash-flow-form-button {
+    background-color: #ffffff;
+    color: #392D69;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    margin: 20px;
+}
+
+.cash-flow-form-button:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.cash-flow-title-modal {
+    padding: 40px 0px;
+}
+
+.cash-flow-form-item {
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cash-flow-type-item {
+ padding: 0px 35px;
+}
+
+.cash-flow-datepicker {
+    width: 100%;
+    padding: 5px;
+    font-size: 15px;
+}
+
+.cash-flow-form-dropdown {
+    padding: 5px;
+    font-size: 15px;
+    width: 100%;
+}
+
+.cash-flow-form-input {
+    padding: 5px;
+    font-size: 15px;
+    width: 100%;
+}
+
+
+/* .exit-modal-button {
+    background-color: #ffffff;
+    color: #392D69;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    margin: 5px;
+}
+
+.exit-modal-button:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+} */

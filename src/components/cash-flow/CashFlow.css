@@ -1,0 +1,14 @@
+.cash-flow-head-wrapper {
+    text-align: center;
+    border: none;
+    border-radius: 20px;
+    margin: 50px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.5);
+    
+}
+
+.cash-flow-title {
+    padding: 30px 10px;
+    margin: 0px;
+}

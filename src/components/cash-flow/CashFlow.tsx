@@ -15,9 +15,13 @@ export function CashFlow() {
 
   return (
     <div>
-      <h1 className="cash-flow-title">Cash Flow</h1>
-      <div>
-        <button onClick={handleClick}>Add</button>
+      <div className="cash-flow-head-wrapper">
+        <h1 className="cash-flow-title">Cash Flow</h1>
+        <div>
+          <button className="cash-flow-form-button" onClick={handleClick}>
+            Add new item
+          </button>
+        </div>
       </div>
       {isModalOpen === true && (
         <CashFlowModal onCloseModal={handleCloseModal} />

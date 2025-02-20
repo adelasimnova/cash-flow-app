@@ -60,9 +60,12 @@ export function CashFlowModal(props: IProps) {
       onClick={handleCloseModal}
     >
       <div className="cash-flow-modal">
-        <h1>New cash flow item</h1>
+        {/* <button onClick={handleCloseModal} className="exit-modal-button">
+          X
+        </button> */}
+        <h2 className="cash-flow-title-modal">New cash flow item</h2>
         <form onSubmit={handleSubmit}>
-          <div>
+          <div className="cash-flow-form-item">
             <label className="cash-flow-form-label" htmlFor="date">
               Date:
             </label>
@@ -76,33 +79,36 @@ export function CashFlowModal(props: IProps) {
               dateFormat="dd/MM/yyyy"
             />
           </div>
-          <div>
-            <input
-              type="radio"
-              id="income"
-              name="cashflow-type"
-              value="income"
-              checked={formData.type === "income"}
-              onChange={() => handleChange("type", "income")}
-            />
-            <label className="cash-flow-form-label" htmlFor="income">
-              income
-            </label>
-
-            <input
-              type="radio"
-              id="expense"
-              name="cashflow-type"
-              value="expense"
-              checked={formData.type === "expense"}
-              onChange={() => handleChange("type", "expense")}
-            />
-            <label className="cash-flow-form-label" htmlFor="expense">
-              expense
-            </label>
+          <div className="cash-flow-form-item">
+            <div className="cash-flow-type-item">
+              <input
+                type="radio"
+                id="income"
+                name="cashflow-type"
+                value="income"
+                checked={formData.type === "income"}
+                onChange={() => handleChange("type", "income")}
+              />
+              <label className="cash-flow-form-label" htmlFor="income">
+                income
+              </label>
+            </div>
+            <div className="cash-flow-type-item">
+              <input
+                type="radio"
+                id="expense"
+                name="cashflow-type"
+                value="expense"
+                checked={formData.type === "expense"}
+                onChange={() => handleChange("type", "expense")}
+              />
+              <label className="cash-flow-form-label" htmlFor="expense">
+                expense
+              </label>
+            </div>
           </div>
 
-          <div>
+          <div className="cash-flow-form-item">
             <label className="cash-flow-form-label" htmlFor="category">
               Category:
             </label>
@@ -124,11 +130,12 @@ export function CashFlowModal(props: IProps) {
             </select>
           </div>
 
-          <div>
+          <div className="cash-flow-form-item">
             <label className="cash-flow-form-label" htmlFor="amount">
               Amount:
             </label>
             <input
+              className="cash-flow-form-input"
               id="amount"
               type="number"
               min="0"
@@ -137,11 +144,12 @@ export function CashFlowModal(props: IProps) {
             ></input>
           </div>
 
-          <div>
+          <div className="cash-flow-form-item">
             <label className="cash-flow-form-label" htmlFor="participant">
               Participant:
             </label>
             <input
+              className="cash-flow-form-input"
               id="participant"
               type="text"
               value={formData.participant || ""}
@@ -149,12 +157,11 @@ export function CashFlowModal(props: IProps) {
             ></input>
           </div>
 
-          <div>
+          <div className="cash-flow-form-item">
             <label className="cash-flow-form-label" htmlFor="note">
               Note:
             </label>
             <textarea
-              className="cash-flow-form-input"
               placeholder="-- Your input here --"
               id="notesInput"
               value={formData.note || ""}
