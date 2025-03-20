@@ -2,9 +2,12 @@ import DatePicker from "react-datepicker";
 import "./CashFlowModal.css";
 import "react-datepicker/dist/react-datepicker.css";
 import React from "react";
+import { CashFlowItem } from "../../types/CashFlowItem";
+import { v4 as uuidv4 } from "uuid";
 
 interface IProps {
   onCloseModal: () => void;
+  onAddCashFlowItem: (item: CashFlowItem) => void;
 }
 
 export interface FormData {
@@ -43,6 +46,16 @@ export function CashFlowModal(props: IProps) {
     e.preventDefault();
 
     console.log(formData);
+    // TODO: add error handling
+    props.onAddCashFlowItem({
+      id: uuidv4(),
+      date: formData.date || "",
+      type: formData.type,
+      category: formData.category,
+      note: formData.note || "",
+      participant: formData.participant || "",
+      amount: formData.amount || 0,
+    });
 
     props.onCloseModal();
   }

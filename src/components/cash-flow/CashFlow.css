@@ -1,14 +1,39 @@
 .cash-flow-head-wrapper {
     text-align: center;
-    border: none;
-    border-radius: 20px;
-    margin: 50px;
-    padding: 30px;
-    background-color: rgba(255, 255, 255, 0.5);
-    
 }
 
 .cash-flow-title {
     padding: 30px 10px;
     margin: 0px;
+}
+
+.cash-flow-item-container {
+    width: 100vw;
+    height: 400px;
+}
+
+.cash-flow-table {
+    margin: 15px 0 0 46px;
+    border-radius: 15px;
+    background-color: rgb(155, 140, 187);
+    padding: 10px 0 10px 10px;
+
+  }
+
+  .ReactVirtualized__Table__Grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ReactVirtualized__Table__Grid::-webkit-scrollbar-track {
+    background-color: rgb(155, 140, 187);
+}
+
+.ReactVirtualized__Table__Grid::-webkit-scrollbar-thumb {
+    background: #CCC;
+    border-radius: 3px;
+
+}
+
+.ReactVirtualized__Table__Grid::-webkit-scrollbar-thumb:hover {
+    background: #AAA;
 }
