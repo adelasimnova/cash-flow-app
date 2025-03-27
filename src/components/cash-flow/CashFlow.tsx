@@ -4,6 +4,7 @@ import React from "react";
 import { CashFlowItem } from "../../types/CashFlowItem";
 import { AutoSizer, Column, Table } from "react-virtualized";
 import "react-virtualized/styles.css";
+import Chart from "react-apexcharts";
 
 const mock: CashFlowItem[] = [
   {
@@ -227,6 +228,20 @@ const mock: CashFlowItem[] = [
 export function CashFlow() {
   const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
   const [items, setItems] = React.useState<CashFlowItem[]>(mock);
+  const incomeData = Array(12).fill(0);
+  const expenseData = Array(12).fill(0);
+
+  items.forEach((item) => {
+    const month = new Date(item.date).getMonth();
+    const year = new Date(item.date).getFullYear();
+    if (year === 2025) {
+      if (item.type === "income") {
+        incomeData[month] += item.amount;
+      } else if (item.type === "expense") {
+        expenseData[month] += item.amount;
+      }
+    }
+  });
 
   function handleAddCashFlowItem(item: CashFlowItem) {
     setItems((prev) => {
@@ -283,6 +298,60 @@ export function CashFlow() {
               )}
             </AutoSizer>
           </div>
+          <Chart
+            options={{
+              xaxis: {
+                categories: [
+                  "01/2025",
+                  "02/2025",
+                  "03/2025",
+                  "04/2025",
+                  "05/2025",
+                  "06/2025",
+                  "07/2025",
+                  "08/2025",
+                  "09/2025",
+                  "10/2025",
+                  "11/2025",
+                  "12/2025",
+                ],
+                labels: {
+                  style: {
+                    colors: "#FFFFFF",
+                  },
+                },
+              },
+              yaxis: {
+                labels: {
+                  style: {
+                    colors: "#FFFFFF",
+                  },
+                },
+              },
+              tooltip: {
+                theme: "dark",
+                shared: true,
+                intersect: false,
+              },
+              legend: {
+                labels: {
+                  colors: "#FFFFFF",
+                },
+              },
+            }}
+            series={[
+              {
+                name: "income",
+                data: incomeData,
+              },
+              {
+                name: "expense",
+                data: expenseData,
+              },
+            ]}
+            type="bar"
+            height={430}
+          />
         </div>
       </div>
       {isModalOpen === true && (
