@@ -39,10 +39,37 @@ export function CashFlowModal(props: IProps) {
   });
 
   function handleChange(key: string, value: string | null) {
-    setFormData({ ...formData, [key]: value });
+    if (key === "type") {
+      if (value === "income") {
+        setFormData((prev) => ({
+          ...prev,
+          type: "income",
+          amount: prev.amount ? Math.abs(prev.amount) : null,
+        }));
+      } else if (value === "expense") {
+        setFormData((prev) => ({
+          ...prev,
+          type: "expense",
+          amount: prev.amount ? -Math.abs(prev.amount) : null,
+        }));
+      }
+    } else if (key === "amount") {
+      setFormData((prev) => ({
+        ...prev,
+        amount:
+          prev.type === "expense"
+            ? -Math.abs(Number(value))
+            : Math.abs(Number(value)),
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [key]: value,
+      }));
+    }
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     console.log(formData);
@@ -60,7 +87,8 @@ export function CashFlowModal(props: IProps) {
     props.onCloseModal();
   }
 
-  function handleCloseModal(e) {
+  function handleCloseModal(e: React.MouseEvent<HTMLDivElement>) {
+    // @ts-expect-error lebo preto
     if (e.target.id === "cash-flow-modal-container") {
       props.onCloseModal();
     }
@@ -76,7 +104,7 @@ export function CashFlowModal(props: IProps) {
         {/* <button onClick={handleCloseModal} className="exit-modal-button">
           X
         </button> */}
-        <h2 className="cash-flow-title-modal">New cash flow item</h2>
+        <h2 className="cash-flow-title-modal">New CoinFlow item</h2>
         <form onSubmit={handleSubmit}>
           <div className="cash-flow-form-item">
             <label className="cash-flow-form-label" htmlFor="date">
@@ -151,7 +179,7 @@ export function CashFlowModal(props: IProps) {
               className="cash-flow-form-input"
               id="amount"
               type="number"
-              min="0"
+              // min="0"
               value={formData.amount || 0}
               onChange={(e) => handleChange("amount", e.target.value)}
             ></input>
@@ -175,14 +203,15 @@ export function CashFlowModal(props: IProps) {
               Note:
             </label>
             <textarea
-              placeholder="-- Your input here --"
+              placeholder="- Your input here -"
               id="notesInput"
               value={formData.note || ""}
+              style={{ width: "178.17px", height: "18px" }}
               onChange={(e) => handleChange("note", e.target.value)}
             />
           </div>
 
-          <div>
+          <div className="cash-flow-form-button-wrapper">
             <button className="cash-flow-form-button" type="submit">
               Submit
             </button>

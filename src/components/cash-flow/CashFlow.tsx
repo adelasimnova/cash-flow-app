@@ -41,7 +41,7 @@ const mock: CashFlowItem[] = [
     category: "clothes",
     note: "rifle",
     participant: "Mohito",
-    amount: 678,
+    amount: -678,
   },
   {
     id: crypto.randomUUID(),
@@ -50,7 +50,7 @@ const mock: CashFlowItem[] = [
     category: "living",
     note: "",
     participant: "Ticketportal",
-    amount: 745,
+    amount: -745,
   },
   {
     id: crypto.randomUUID(),
@@ -59,7 +59,7 @@ const mock: CashFlowItem[] = [
     category: "media",
     note: "",
     participant: "Netflix",
-    amount: 1200,
+    amount: -1200,
   },
   {
     id: crypto.randomUUID(),
@@ -68,7 +68,7 @@ const mock: CashFlowItem[] = [
     category: "clothes",
     note: "",
     participant: "Zara",
-    amount: 567,
+    amount: -567,
   },
   {
     id: crypto.randomUUID(),
@@ -77,7 +77,7 @@ const mock: CashFlowItem[] = [
     category: "clothes",
     note: "",
     participant: "H&M",
-    amount: 569,
+    amount: -569,
   },
   {
     id: crypto.randomUUID(),
@@ -86,7 +86,7 @@ const mock: CashFlowItem[] = [
     category: "fun",
     note: "",
     participant: "Cinemacity",
-    amount: 678,
+    amount: -678,
   },
   {
     id: crypto.randomUUID(),
@@ -95,7 +95,7 @@ const mock: CashFlowItem[] = [
     category: "clothes",
     note: "",
     participant: "CROPP",
-    amount: 806,
+    amount: -806,
   },
   {
     id: crypto.randomUUID(),
@@ -104,7 +104,7 @@ const mock: CashFlowItem[] = [
     category: "clothes",
     note: "",
     participant: "Reserved",
-    amount: 988,
+    amount: -988,
   },
   {
     id: crypto.randomUUID(),
@@ -167,7 +167,7 @@ const mock: CashFlowItem[] = [
     category: "health",
     note: "",
     participant: "Mudr Margetakova",
-    amount: 569,
+    amount: -569,
   },
   {
     id: crypto.randomUUID(),
@@ -176,7 +176,7 @@ const mock: CashFlowItem[] = [
     category: "living",
     note: "na obed",
     participant: "CSOB Obchodna",
-    amount: 894,
+    amount: -894,
   },
   {
     id: crypto.randomUUID(),
@@ -185,7 +185,7 @@ const mock: CashFlowItem[] = [
     category: "food",
     note: "",
     participant: "McDonalds",
-    amount: 670,
+    amount: -670,
   },
   {
     id: crypto.randomUUID(),
@@ -194,7 +194,7 @@ const mock: CashFlowItem[] = [
     category: "travel",
     note: "",
     participant: "ZSSK",
-    amount: 405,
+    amount: -405,
   },
   {
     id: crypto.randomUUID(),
@@ -260,7 +260,8 @@ export function CashFlow() {
   return (
     <div>
       <div className="cash-flow-head-wrapper">
-        <h1 className="cash-flow-title">Cash Flow</h1>
+        <h1 className="cash-flow-title">CoinFlowNow</h1>
+        <p className="cash-flow-phrase">Your Money, Your Move.</p>
         <div>
           <button className="cash-flow-form-button" onClick={handleClick}>
             Add new item
@@ -298,60 +299,100 @@ export function CashFlow() {
               )}
             </AutoSizer>
           </div>
-          <Chart
-            options={{
-              xaxis: {
-                categories: [
-                  "01/2025",
-                  "02/2025",
-                  "03/2025",
-                  "04/2025",
-                  "05/2025",
-                  "06/2025",
-                  "07/2025",
-                  "08/2025",
-                  "09/2025",
-                  "10/2025",
-                  "11/2025",
-                  "12/2025",
-                ],
-                labels: {
-                  style: {
-                    colors: "#FFFFFF",
+          <div className="chart-container">
+            <Chart
+              options={{
+                chart: {
+                  stacked: true,
+                },
+                plotOptions: {
+                  bar: {
+                    horizontal: false,
                   },
                 },
-              },
-              yaxis: {
-                labels: {
-                  style: {
-                    colors: "#FFFFFF",
+                colors: ["#81C784", "#FF6F61", "#2C3E50"],
+                fill: {
+                  opacity: 1,
+                },
+                stroke: {
+                  width: [0, 0, 3],
+                  curve: "smooth",
+                },
+                dataLabels: {
+                  enabled: false,
+                },
+                states: {
+                  hover: {
+                    filter: {
+                      type: "none",
+                    },
+                  },
+                  active: {
+                    filter: {
+                      type: "none",
+                    },
                   },
                 },
-              },
-              tooltip: {
-                theme: "dark",
-                shared: true,
-                intersect: false,
-              },
-              legend: {
-                labels: {
-                  colors: "#FFFFFF",
+                xaxis: {
+                  categories: [
+                    "01/2025",
+                    "02/2025",
+                    "03/2025",
+                    "04/2025",
+                    "05/2025",
+                    "06/2025",
+                    "07/2025",
+                    "08/2025",
+                    "09/2025",
+                    "10/2025",
+                    "11/2025",
+                    "12/2025",
+                  ],
+                  labels: {
+                    style: {
+                      colors: "#2C3E50",
+                      fontSize: "14px",
+                    },
+                  },
                 },
-              },
-            }}
-            series={[
-              {
-                name: "income",
-                data: incomeData,
-              },
-              {
-                name: "expense",
-                data: expenseData,
-              },
-            ]}
-            type="bar"
-            height={430}
-          />
+                yaxis: {
+                  labels: {
+                    style: {
+                      colors: "#2C3E50",
+                      fontSize: "14px",
+                    },
+                  },
+                },
+                tooltip: {
+                  theme: "light",
+                  shared: true,
+                  intersect: false,
+                },
+                legend: {
+                  labels: {
+                    colors: "#2C3E50",
+                  },
+                },
+              }}
+              series={[
+                {
+                  name: "income",
+                  data: incomeData,
+                },
+                {
+                  name: "expense",
+                  data: expenseData,
+                },
+                {
+                  name: "cash flow",
+                  type: "line",
+                  data: incomeData.map((income, i) => income + expenseData[i]),
+                },
+              ]}
+              type="bar"
+              height={450}
+            />
+          </div>
         </div>
       </div>
       {isModalOpen === true && (

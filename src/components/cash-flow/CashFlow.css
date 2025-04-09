@@ -3,7 +3,7 @@
 }
 
 .cash-flow-title {
-    padding: 30px 0px 20px;
+    padding: 30px 0px 0px;
     margin: 0px;
 }
 
@@ -14,34 +14,32 @@
 
 .cash-flow-table {
     margin: 15px 0 0 46px;
-    border-radius: 15px;
-    background-color: rgb(155, 140, 187);
+    background: linear-gradient(to bottom right, #E0D7C6, #CFC4B2);
     padding: 10px 5px 10px 0px;
+    border-radius: 8px;
   }
 
-  .ReactVirtualized__Table__Grid::-webkit-scrollbar {
+.ReactVirtualized__Table__Grid::-webkit-scrollbar {
     width: 8px;
 }
 
 .ReactVirtualized__Table__Grid::-webkit-scrollbar-track {
-    background-color: rgb(155, 140, 187);
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .ReactVirtualized__Table__Grid::-webkit-scrollbar-thumb {
-    background: #CCC;
+    background: #F5F5DC;
     border-radius: 3px;
-
 }
 
 .ReactVirtualized__Table__Grid::-webkit-scrollbar-thumb:hover {
     background: #AAA;
 }
 
-.apexcharts-menu { 
-    color: White !important;
-    background:#9b8cbb !important;
- }
+.apexcharts-menu-icon svg {
+    fill: #2C3E50 !important;
+  }
 
- .apexcharts-menu-icon svg {
-    fill: white !important;
+.chart-container {
+    margin: 20px;
   }

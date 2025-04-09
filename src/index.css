@@ -1,9 +1,14 @@
 body {
-    background-image: url("assets/gradient.png");
-    font-family: sans-serif, arial;
+    background: linear-gradient(to bottom, #F5F5DC, #E0D7C6);
+    font-family: 'Poppins', sans-serif, arial;
     font-weight: 200;
     font-size: 20px;
-    color: #ffffff;
+    color: #2C3E50;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif, arial;
+    color: #1C2833;
 }
 
 textarea {
