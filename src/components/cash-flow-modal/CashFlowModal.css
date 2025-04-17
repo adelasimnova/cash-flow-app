@@ -1,98 +1,91 @@
 .cash-flow-modal-container {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-color: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(1px);
-    min-width: 200px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(1px);
+  min-width: 200px;
 }
 
 .cash-flow-modal {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background: linear-gradient(to bottom right, #E0D7C6, #CFC4B2);
-    min-width: 200px;
-    margin: 45px 100px;
-    padding: 0px 30px 30px 30px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(to bottom right, #e0d7c6, #cfc4b2);
+  min-width: 200px;
+  margin: 45px 100px;
+  padding: 0px 30px 30px 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
 }
 
-.cash-flow-form-label{
-    margin: 10px;
+.cash-flow-form-label {
+  margin: 10px;
 }
 
 .cash-flow-form-button {
-    background: #4CAF50;
-    color: #ffffff;
-    padding: 10px 30px;
-    border: none;
-    font-size: 20px;
-    margin: 20px;
-    border-radius: 8px;
+  background: #4caf50;
+  color: #ffffff;
+  padding: 10px 30px;
+  border: none;
+  font-size: 20px;
+  margin: 20px;
+  border-radius: 8px;
 }
 
 .cash-flow-form-button-wrapper {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .cash-flow-form-button:hover {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(to right, #388E3C, #4CAF50);
-    cursor: pointer;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(to right, #388e3c, #4caf50);
+  cursor: pointer;
 }
 
 .cash-flow-title-modal {
-    padding: 40px 0px;
+  padding: 40px 0px;
 }
 
 .cash-flow-form-item {
-    margin: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: auto;
+  margin: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
 }
 
 .cash-flow-type-item {
- padding: 0px 35px;
+  padding: 0px 35px;
 }
 
 .cash-flow-datepicker {
-    width: 100%;
-    padding: 5px;
-    font-size: 15px;
-    width: 186.35px; 
+  width: 100%;
+  padding: 5px;
+  font-size: 15px;
+  width: 186.35px;
 }
 
 .cash-flow-form-dropdown {
-    padding: 5px;
-    font-size: 15px;
-    width: 200px ; 
+  padding: 5px;
+  font-size: 15px;
+  width: 200px;
 }
 
 .cash-flow-form-input {
-    padding: 5px;
-    font-size: 15px;
-    width: 186.35px;
-}
-
-/* Error styles */
-.error {
-    border: 2px solid #ff4444;
-    border-radius: 4px;
+  padding: 5px;
+  font-size: 15px;
+  width: 186.35px;
 }
 
 .error-message {
-    color: #ff4444;
-    font-size: 12px;
-    margin-top: 4px;
-    text-align: right;
+  color: #ff4444;
+  text-align: center;
+  font-weight: bold;
 }
 
 /* .exit-modal-button {

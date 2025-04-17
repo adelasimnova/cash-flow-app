@@ -14,15 +14,15 @@ export interface FormData {
   date: string | null;
   type: "income" | "expense";
   category:
-    | "food"
-    | "clothes"
-    | "fun"
-    | "media"
-    | "health"
-    | "living"
-    | "travel"
-    | "uncategorized"
-    | "salary";
+  | "food"
+  | "clothes"
+  | "fun"
+  | "media"
+  | "health"
+  | "living"
+  | "travel"
+  | "uncategorized"
+  | "salary";
   note: string | null;
   participant: string | null;
   amount: number | null;
@@ -37,6 +37,21 @@ export function CashFlowModal(props: IProps) {
     amount: null,
     participant: null,
   });
+
+  const [error, setError] = React.useState<string | null>(null);
+
+  const validateForm = () => {
+    if (!formData.date) {
+      return "Please select a date.";
+    }
+    if (!formData.amount || formData.amount === 0) {
+      return "Please enter a valid amount.";
+    }
+    if (!formData.participant || formData.participant.trim() === "") {
+      return "Please enter a participant.";
+    }
+    return null;
+  };
 
   function handleChange(key: string, value: string | null) {
     if (key === "type") {
@@ -72,8 +87,12 @@ export function CashFlowModal(props: IProps) {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    console.log(formData);
-    // TODO: add error handling
+    const formError = validateForm();
+    if (formError) {
+      setError(formError);
+      return;
+    }
+
     props.onAddCashFlowItem({
       id: uuidv4(),
       date: formData.date || "",
@@ -86,7 +105,6 @@ export function CashFlowModal(props: IProps) {
 
     props.onCloseModal();
   }
-
   function handleCloseModal(e: React.MouseEvent<HTMLDivElement>) {
     // @ts-expect-error lebo preto
     if (e.target.id === "cash-flow-modal-container") {
@@ -210,7 +228,7 @@ export function CashFlowModal(props: IProps) {
               onChange={(e) => handleChange("note", e.target.value)}
             />
           </div>
-
+          <p className="error-message">{error}</p>
           <div className="cash-flow-form-button-wrapper">
             <button className="cash-flow-form-button" type="submit">
               Submit
