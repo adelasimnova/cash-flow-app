@@ -228,6 +228,25 @@ const mock: CashFlowItem[] = [
 export function CashFlow() {
   const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
   const [items, setItems] = React.useState<CashFlowItem[]>(mock);
+  const [sortBy, setSortBy] = React.useState<keyof CashFlowItem>("date");
+  const [sortDirection, setSortDirection] = React.useState<"ASC" | "DESC">(
+    "ASC",
+  );
+
+  function handleAddCashFlowItem(item: CashFlowItem) {
+    setItems((prev) => {
+      return [...prev, item];
+    });
+  }
+
+  function handleClick() {
+    setIsModalOpen(true);
+  }
+
+  function handleCloseModal() {
+    setIsModalOpen(false);
+  }
+
   const incomeData = Array(12).fill(0);
   const expenseData = Array(12).fill(0);
 
@@ -243,19 +262,26 @@ export function CashFlow() {
     }
   });
 
-  function handleAddCashFlowItem(item: CashFlowItem) {
-    setItems((prev) => {
-      return [...prev, item];
+  const sortedItems = React.useMemo(() => {
+    return items.sort((a, b) => {
+      const valA = a[sortBy];
+      const valB = b[sortBy];
+
+      if (valA < valB) {
+        if (sortDirection === "ASC") {
+          return -1;
+        } else {
+          return 1;
+        }
+      } else {
+        if (sortDirection === "ASC") {
+          return 1;
+        } else {
+          return -1;
+        }
+      }
     });
-  }
-
-  function handleClick() {
-    setIsModalOpen(true);
-  }
-
-  function handleCloseModal() {
-    setIsModalOpen(false);
-  }
+  }, [sortBy, sortDirection, items]);
 
   return (
     <div>
@@ -277,8 +303,19 @@ export function CashFlow() {
                     height={400}
                     headerHeight={50}
                     rowHeight={40}
-                    rowCount={items.length}
-                    rowGetter={({ index }) => items[index]}
+                    rowCount={sortedItems.length}
+                    rowGetter={({ index }) => sortedItems[index]}
+                    sortBy={sortBy}
+                    sortDirection={sortDirection}
+                    // nasleduje funkcia ktora hovorio tom ze sortby: ktory stlpec a sortDirection: ktory smer
+                    // premenovali sme sortBy na newSortBy aby sa to nebilo
+                    sort={({
+                      sortBy: newSortBy,
+                      sortDirection: newSortDirection,
+                    }) => {
+                      setSortBy(newSortBy as keyof CashFlowItem);
+                      setSortDirection(newSortDirection);
+                    }}
                   >
                     <Column label="Date" dataKey="date" width={width / 6} />
                     <Column label="Type" dataKey="type" width={width / 6} />

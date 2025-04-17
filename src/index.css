@@ -1,22 +1,24 @@
 body {
-    background: linear-gradient(to bottom, #F5F5DC, #E0D7C6);
-    font-family: 'Poppins', sans-serif, arial;
-    font-weight: 200;
-    font-size: 20px;
-    color: #2C3E50;
+  background: linear-gradient(to bottom, #f5f5dc, #e0d7c6);
+  font-family: "Poppins", sans-serif, arial;
+  font-weight: 200;
+  font-size: 20px;
+  color: #2c3e50;
+  min-height: 100vh;
+  margin: 0;
 }
 
 h1 {
-    font-family: 'Poppins', sans-serif, arial;
-    color: #1C2833;
+  font-family: "Poppins", sans-serif, arial;
+  color: #1c2833;
 }
 
 textarea {
-    resize: none;
-    padding: 10px;
+  resize: none;
+  padding: 10px;
 }
 
 form {
-    display: grid;
-    width: 400px;
+  display: grid;
+  width: 400px;
 }
